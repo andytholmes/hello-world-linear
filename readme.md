@@ -53,11 +53,56 @@ linear-hello-world/\
 
 ------------------------------------------------------------------------
 
+## 🛠️ Setup
+
+### Prerequisites
+
+- Python 3.10 or higher
+
+### Installation
+
+1. **Create a virtual environment:**
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   # For production use
+   pip install -e .
+
+   # For development (includes testing & linting tools)
+   pip install -e ".[dev]"
+   ```
+
+### Using Make (recommended)
+
+```bash
+make install-dev  # Install with dev dependencies
+make test         # Run tests with coverage
+make lint         # Run linter (ruff)
+make format       # Format code
+make typecheck    # Run type checker (mypy)
+make all          # Run lint, typecheck, and test
+```
+
+------------------------------------------------------------------------
+
 ## ▶️ Running
 
-CLI: python main.py --name Andy
+**CLI:**
+```bash
+python main.py --name Andy
+python main.py --name Andy --style casual
+python main.py --name Smith --style formal --title Dr.
+```
 
-API: uvicorn src.hello_world.api:app --reload
+**API:**
+```bash
+uvicorn src.hello_world.api:app --reload --host 0.0.0.0 --port 8000
+# Then visit http://localhost:8000/docs for interactive API docs
+```
 
 ------------------------------------------------------------------------
 
