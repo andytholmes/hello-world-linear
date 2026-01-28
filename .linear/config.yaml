@@ -1,0 +1,56 @@
+# Linear Integration Configuration
+# This file defines how Linear issues map to code structure
+
+project:
+  name: Linear Hello World
+  description: AI-Native Python Project demonstrating Linear + Cursor + GitHub workflow
+
+# Issue label mappings
+labels:
+  setup:
+    description: Initial project setup and configuration
+    paths:
+      - pyproject.toml
+      - Makefile
+      - .cursor/
+      - .linear/
+  
+  feature:
+    description: New feature implementation
+    paths:
+      - src/hello_world/
+  
+  api:
+    description: REST API related changes
+    paths:
+      - src/hello_world/api.py
+  
+  cli:
+    description: CLI related changes
+    paths:
+      - src/hello_world/cli.py
+      - main.py
+  
+  test:
+    description: Test related changes
+    paths:
+      - tests/
+
+# Workflow mapping
+workflow:
+  # Linear states map to git workflow
+  backlog: planning
+  todo: ready-for-development
+  in_progress: feature-branch
+  in_review: pull-request
+  done: merged
+
+# Branch naming convention
+branches:
+  pattern: "cursor/{issue-id}-{issue-title-slug}"
+  example: "cursor/AND-6-initial-project-setup"
+
+# Commit message convention
+commits:
+  pattern: "[{issue-id}] {message}"
+  example: "[AND-6] Add initial project scaffolding"
